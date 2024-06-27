@@ -1,0 +1,10 @@
+# Dockerfile to emisor and receptor
+FROM node:14
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+COPY . .
+
+CMD ["node", "client.js"]
