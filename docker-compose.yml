@@ -1,0 +1,24 @@
+services:
+  servidor_websocket:
+    build:
+        context: .
+        dockerfile: Dockerfile.server
+    container_name: servidor_websocket
+    ports:
+      - "8080:8080"    
+
+  emissor:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: emissor
+    depends_on:
+      - servidor_websocket
+
+  receptor:
+    build: 
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: receptor
+    depends_on:
+      - servidor_websocket
